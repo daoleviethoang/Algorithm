@@ -1,67 +1,57 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-class Solution {
-    public String solve(String s, String t) {
-        StringBuilder sNew = new StringBuilder();
-        char[] charArrayS= s.toCharArray();
-        char[] charArrayT = t.toCharArray();
+class Passwords {
+    public int[] solve(int n, int k, String[] passwords, String passwordReal) {
+        int[] results = new int[2];
+        ArrayList<String> aLess = new ArrayList<>();
+        ArrayList<String> aEquals = new ArrayList<>();
 
-        if (s.length() == t.length()) {
-            Arrays.sort(charArrayS);
-            Arrays.sort(charArrayT);
-            if (new String(charArrayS).contains(new String(charArrayT)))
-                return "array";
-        }
-
-        for (int i = 0; i < s.length(); i++) {
-            if (t.contains(s.charAt(i)+"")) {
-                sNew.append(s.charAt(i));
+        for (int i = 0; i < n; i++) {
+            if (passwords[i].length() < passwordReal.length()) {
+                aLess.add(passwords[i]);
+            } else if (passwords[i].length() == passwordReal.length()) {
+                aEquals.add(passwords[i]);
             }
         }
 
-        //automaton
-        if (sNew.length() == t.length()) {
-            if (sNew.toString().contains(t))
-                return "automaton";
+        if (aLess.size() < k) {
+            results[0] = aLess.size() + 1;
+        } else if (aLess.size() >= k) {
+            results[0] = aLess.size() + (aLess.size() / k) * 5 + 1;
+        }
+
+        if (aLess.size() + aEquals.size() <= k) {
+            results[1] = aLess.size() + aEquals.size();
         } else {
-            
-        }
-
-        Map<String, Integer> tMap = new HashMap<>();
-        for (int i = 0; i < t.length(); i++) {
-            if (tMap.get(t.charAt(i)+"") == null) {
-                tMap.put(t.charAt(i)+"", 0);
+            if (aLess.size() + aEquals.size() % k == 0) {
+                results[1] = (aLess.size() + aEquals.size()) + ((aLess.size() + aEquals.size()) / k) * 5 - 1 * 5;
             } else {
-                tMap.put(t.charAt(i)+"", tMap.get(t.charAt(i)+"")+1);
+                results[1] = (aLess.size() + aEquals.size()) + ((aLess.size() + aEquals.size()) / k) * 5;
             }
         }
-
-        Set<String> tSet = tMap.keySet();
-        for (String c: tSet) {
-            int count = 0;
-            for (int i = 0; i < sNew.length(); i++) {
-                if ((sNew.charAt(i) + "").equals(c)) {
-                    count++;
-                }
-            }
-            if (count < tMap.get(c)) {
-                return "need tree";
-            }
-        }
-
-        return "both";
+        return results;
     }
-}
 
-class Main {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-
+        Passwords passwordsObj = new Passwords();
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        String t = scanner.nextLine();
+
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        scanner.nextLine();
+
+        String[] passwords = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            passwords[i] = scanner.nextLine();
+        }
+
+        String passwordReal = scanner.nextLine();
         scanner.close();
 
-        System.out.print(solution.solve(s, t));
+        int[] results = passwordsObj.solve(n, k, passwords, passwordReal);
+
+        System.out.print(results[0] + " " + results[1]);
     }
 }

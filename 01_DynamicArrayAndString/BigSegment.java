@@ -1,8 +1,6 @@
-package Week01.Lecture01;
-
 import java.util.Scanner;
 
-class Solution06 {
+public class BigSegment {
     public int solve(int[][] segments, int n) {
         int max = 0;
         int maxIndex = 0;
@@ -30,11 +28,9 @@ class Solution06 {
             return -1;
         }
     }
-}
 
-public class BigSegment {
     public static void main(String[] args) {
-        Solution06 solution = new Solution06();
+        BigSegment bigSegment = new BigSegment();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();
@@ -44,7 +40,8 @@ public class BigSegment {
             segments[i][0] = scanner.nextInt();
             segments[i][1] = scanner.nextInt();
         }
+        scanner.close();
 
-        System.out.print(solution.solve(segments, n));
+        System.out.print(bigSegment.solve(segments, n));
     }
 }

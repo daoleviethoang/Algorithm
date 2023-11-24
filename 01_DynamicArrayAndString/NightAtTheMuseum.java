@@ -1,5 +1,3 @@
-package Week01.Lecture01;
-
 import java.util.Scanner;
 
 public class NightAtTheMuseum {

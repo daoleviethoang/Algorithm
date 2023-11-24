@@ -1,8 +1,6 @@
-package Week01.Lecture01;
-
 import java.util.Scanner;
 
-class Solution {
+class FashionInBerland {   
     public boolean solve(int n, int[] buttons) {
         if (n == 1) {
             return buttons[0] == 1 ? true : false;
@@ -19,11 +17,9 @@ class Solution {
         }
         return countOpen == 1 ? true : false;
     }
-}
 
-class FashionInBerland {   
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        FashionInBerland fashionInBerland = new FashionInBerland();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();
@@ -32,7 +28,8 @@ class FashionInBerland {
         for (int i = 0; i < n; i++) {
             buttons[i] = scanner.nextInt();
         }
+        scanner.close();
 
-        System.out.print(solution.solve(n, buttons) ? "YES" : "NO");
+        System.out.print(fashionInBerland.solve(n, buttons) ? "YES" : "NO");
     }
 }

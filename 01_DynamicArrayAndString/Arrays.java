@@ -1,8 +1,6 @@
-package Week01.Lecture01;
-
 import java.util.Scanner;
 
-class Solution05 {
+public class Arrays {
     public boolean solve(int nA, int nB, int k, int m, int[] A, int[] B) {
         if (B[nB - m] > A[k-1]) {
             return true;
@@ -10,11 +8,9 @@ class Solution05 {
             return false;
         }
     }
-}
 
-public class Arrays {
     public static void main(String[] args) {
-        Solution05 solution = new Solution05();
+        Arrays arrays = new Arrays();
         Scanner scanner = new Scanner(System.in);
     
         int nA = scanner.nextInt();
@@ -35,6 +31,6 @@ public class Arrays {
             B[i] = scanner.nextInt();
         }
     
-        System.out.print(solution.solve(nA, nB, k, m, A, B) ? "YES" : "NO");
+        System.out.print(arrays.solve(nA, nB, k, m, A, B) ? "YES" : "NO");
     }
 }
