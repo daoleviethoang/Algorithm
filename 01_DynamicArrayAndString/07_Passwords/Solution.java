@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Passwords {
+class Solution {
     public int[] solve(int n, int k, String[] passwords, String passwordReal) {
         int[] results = new int[2];
         ArrayList<String> aLess = new ArrayList<>();
@@ -34,7 +34,7 @@ class Passwords {
     }
 
     public static void main(String[] args) {
-        Passwords passwordsObj = new Passwords();
+        Solution solution = new Solution();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();
@@ -50,7 +50,7 @@ class Passwords {
         String passwordReal = scanner.nextLine();
         scanner.close();
 
-        int[] results = passwordsObj.solve(n, k, passwords, passwordReal);
+        int[] results = solution.solve(n, k, passwords, passwordReal);
 
         System.out.print(results[0] + " " + results[1]);
     }

@@ -1,10 +1,7 @@
 import java.util.Scanner;
 
-public class NightAtTheMuseum {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine(); 
-
+public class Solution {
+    public int solve(String input) {
         int firstRange = Math.abs(97 - input.charAt(0));
         int results = firstRange > 13 ? 26 - firstRange : firstRange;
 
@@ -19,6 +16,17 @@ public class NightAtTheMuseum {
                 }
             }   
         }
-        System.out.print(results);
+
+        return results;
+    }
+    
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine(); 
+        scanner.close();
+
+        System.out.print(solution.solve(input));
     }
 }

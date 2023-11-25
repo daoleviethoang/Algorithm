@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class FashionInBerland {   
+public class Solution {   
     public boolean solve(int n, int[] buttons) {
         if (n == 1) {
             return buttons[0] == 1 ? true : false;
@@ -19,7 +19,7 @@ class FashionInBerland {
     }
 
     public static void main(String[] args) {
-        FashionInBerland fashionInBerland = new FashionInBerland();
+        Solution solution = new Solution();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();
@@ -30,6 +30,6 @@ class FashionInBerland {
         }
         scanner.close();
 
-        System.out.print(fashionInBerland.solve(n, buttons) ? "YES" : "NO");
+        System.out.print(solution.solve(n, buttons) ? "YES" : "NO");
     }
 }

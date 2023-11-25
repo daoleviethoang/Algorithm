@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BigSegment {
+public class Solution {
     public int solve(int[][] segments, int n) {
         int max = 0;
         int maxIndex = 0;
@@ -30,7 +30,7 @@ public class BigSegment {
     }
 
     public static void main(String[] args) {
-        BigSegment bigSegment = new BigSegment();
+        Solution solution = new Solution();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();
@@ -42,6 +42,6 @@ public class BigSegment {
         }
         scanner.close();
 
-        System.out.print(bigSegment.solve(segments, n));
+        System.out.print(solution.solve(segments, n));
     }
 }
