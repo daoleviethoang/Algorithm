@@ -2,19 +2,13 @@ import java.util.Scanner;
 
 class NightAtTheMuseum {
     public int solve(String input) {
-        int firstRange = Math.abs(97 - input.charAt(0));
-        int results = firstRange > 13 ? 26 - firstRange : firstRange;
+        int results = 0;
+        int pointer = 'a';
 
-        if (input.length() != 1) {
-            for (int i = 1; i < input.length(); i++) {
-                int range = Math.abs(input.charAt(i) - input.charAt(i - 1));
-                
-                if (range > 13) {
-                    results = results + (26 - range);
-                } else {
-                    results = results + range;
-                }
-            }   
+        for (int i = 0; i < input.length(); i++) {
+            int distance = Math.abs(input.charAt(i) - pointer);
+            results += distance < 13 ? distance : (26 - distance);
+            pointer = input.charAt(i);
         }
 
         return results;
