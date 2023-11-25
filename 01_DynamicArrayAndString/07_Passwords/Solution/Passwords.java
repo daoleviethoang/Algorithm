@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Solution {
+class Passwords {
     public int[] solve(int n, int k, String[] passwords, String passwordReal) {
         int[] results = new int[2];
         ArrayList<String> aLess = new ArrayList<>();
@@ -34,7 +34,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Passwords solution = new Passwords();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();

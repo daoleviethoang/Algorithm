@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Solution {
+public class Arrays {
     public boolean solve(int nA, int nB, int k, int m, int[] A, int[] B) {
         if (B[nB - m] > A[k-1]) {
             return true;
@@ -10,7 +10,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Arrays solution = new Arrays();
         Scanner scanner = new Scanner(System.in);
     
         int nA = scanner.nextInt();

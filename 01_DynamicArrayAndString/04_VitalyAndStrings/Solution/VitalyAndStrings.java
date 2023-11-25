@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Solution {
+public class VitalyAndStrings {
 	public String solve(String s, String t) {
         String r = "";
         int indexCheck = -1;
@@ -33,7 +33,7 @@ public class Solution {
 	}
     
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        VitalyAndStrings solution = new VitalyAndStrings();
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         String t = scanner.nextLine();

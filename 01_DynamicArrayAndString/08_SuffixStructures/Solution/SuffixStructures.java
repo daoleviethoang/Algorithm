@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Solution {
+public class SuffixStructures {
     public String solve(String s, String t) {
         StringBuilder sNew = new StringBuilder();
         char[] charArrayS = s.toCharArray();
@@ -73,7 +73,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        SuffixStructures solution = new SuffixStructures();
 
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();

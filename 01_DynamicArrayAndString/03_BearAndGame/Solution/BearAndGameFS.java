@@ -1,27 +1,7 @@
 import java.util.Scanner;
 
-public class Solution {
+public class BearAndGameFS {    
     public int solve(int n, int[] minutes) {
-
-        if (minutes[0] > 15) {
-            return 15;
-        }
-
-        for (int i = 1; i < n; i ++) {
-            if (minutes[i] - minutes[i - 1] > 15) {
-                return minutes[i - 1] + 15;
-            }
-        }
-
-        if (minutes[n - 1] + 15 < 90) {
-            return minutes[n - 1] + 15;
-        }
-
-        return 90;
-    }
-    
-/*  first solutiob :)
-    public int solve2(int n, int[] minutes) {
         int results = 0;
 
         if (n == 1) {
@@ -47,10 +27,9 @@ public class Solution {
             }
         }
     }
- */
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        BearAndGameFS solution = new BearAndGameFS();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();

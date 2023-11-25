@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Solution {
+class NightAtTheMuseum {
     public int solve(String input) {
         int firstRange = Math.abs(97 - input.charAt(0));
         int results = firstRange > 13 ? 26 - firstRange : firstRange;
@@ -8,7 +8,7 @@ public class Solution {
         if (input.length() != 1) {
             for (int i = 1; i < input.length(); i++) {
                 int range = Math.abs(input.charAt(i) - input.charAt(i - 1));
-    
+                
                 if (range > 13) {
                     results = results + (26 - range);
                 } else {
@@ -21,7 +21,7 @@ public class Solution {
     }
     
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        NightAtTheMuseum solution = new NightAtTheMuseum();
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine(); 
