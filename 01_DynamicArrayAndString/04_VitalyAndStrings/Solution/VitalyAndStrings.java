@@ -1,45 +1,31 @@
 import java.util.Scanner;
 
 public class VitalyAndStrings {
-	public String solve(String s, String t) {
-        String r = "";
-        int indexCheck = -1;
-        for (int i = 0; i < s.length(); i++) {
-            char cTemp = s.charAt(i);
-            if (indexCheck != -1) {
-                int k = s.charAt(i) + 1;
-                if (k <= 122) {
-                    cTemp = (char)k;
-                    indexCheck = -1;
-                } else {
-                    cTemp = 'a';
-                }
+	public String solve(char[] s, char[] t) {
+        for (int i = s.length - 1; i >= 0; i--) {
+            if (s[i] == 'z') {
+                s[i] = 'a';
+            } else {
+                s[i]++;
+                break;
             }
-            int gap = t.charAt(i) - s.charAt(i);
-
-            if (gap > 1) {
-                return s.substring(0, i) + (char)(s.charAt(i)+1) + s.substring(i+1, t.length());
-            } else if (gap == 1 && i != s.length() - 1) {
-                indexCheck = i;
-            }
-
-            r += cTemp;
         }
 
-        if (indexCheck != -1) {
-            return r.substring(0, indexCheck) + (char)(r.charAt(indexCheck)+1) + r.substring(indexCheck+1, t.length());
+        for (int i = 0; i < s.length; i++) {
+            if (t[i] > s[i]) {
+                return String.valueOf(s);
+            }
         }
-        return r;
+
+        return "No such string";
 	}
     
     public static void main(String[] args) {
         VitalyAndStrings solution = new VitalyAndStrings();
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        String t = scanner.nextLine();
+        char[] s = scanner.nextLine().toCharArray();
+        char[] t = scanner.nextLine().toCharArray();
         scanner.close();
-
-        String r = solution.solve(s, t);
-        System.out.print(r.equals(s) ? "No such string" : r);
+        System.out.print(solution.solve(s, t));
     }
 }
