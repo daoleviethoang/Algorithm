@@ -1,14 +1,13 @@
 import java.util.Scanner;
 
-public class ApproximatingAConstantRange {
-    public int solve(int n, int[] a) {
-        
-        return 0;
+public class AliceBobAndChocolate {
+    public int[] solve(int n, int[] a) {
+        return new int[]{0,0};
     }
     public static void main(String[] args) {
-        ApproximatingAConstantRange solution = new ApproximatingAConstantRange();
+        AliceBobAndChocolate solution = new AliceBobAndChocolate();
         Scanner scanner = new Scanner(System.in);
-
+        
         int n = scanner.nextInt();
         int[] a = new int[n];
 
@@ -17,6 +16,7 @@ public class ApproximatingAConstantRange {
         }
         scanner.close();
 
-        System.out.print(solution.solve(n, a));
-    }
+        int[] r = solution.solve(n, a);
+        System.out.print(r[0] + " " + r[1]);
+    }   
 }

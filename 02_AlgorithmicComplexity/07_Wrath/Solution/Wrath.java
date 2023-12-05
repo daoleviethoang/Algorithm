@@ -1,12 +1,11 @@
 import java.util.Scanner;
 
-public class ApproximatingAConstantRange {
+public class Wrath {
     public int solve(int n, int[] a) {
-        
         return 0;
     }
     public static void main(String[] args) {
-        ApproximatingAConstantRange solution = new ApproximatingAConstantRange();
+        Wrath solution = new Wrath();
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt();
@@ -18,5 +17,5 @@ public class ApproximatingAConstantRange {
         scanner.close();
 
         System.out.print(solution.solve(n, a));
-    }
+    }    
 }
