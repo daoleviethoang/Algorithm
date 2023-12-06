@@ -2,9 +2,10 @@ import java.util.Scanner;
 
 public class ApproximatingAConstantRange {
     public int solve(int n, int[] a) {
-        
+
         return 0;
     }
+
     public static void main(String[] args) {
         ApproximatingAConstantRange solution = new ApproximatingAConstantRange();
         Scanner scanner = new Scanner(System.in);

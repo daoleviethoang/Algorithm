@@ -8,10 +8,10 @@ public class Books {
         for (int end = 0; end < n; end++) {
             time += a[end];
 
-            while(time > t) {
+            while (time > t) {
                 time = time - a[start];
                 start++;
-            } 
+            }
 
             if ((end - start + 1) > maxNumBooks) {
                 maxNumBooks = end - start + 1;

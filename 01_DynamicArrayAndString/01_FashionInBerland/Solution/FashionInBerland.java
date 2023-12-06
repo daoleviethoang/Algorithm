@@ -7,7 +7,7 @@ public class FashionInBerland {
         }
 
         int countOpen = 0;
-        for (int button: buttons) {
+        for (int button : buttons) {
             if (button == 0) {
                 countOpen++;
             }

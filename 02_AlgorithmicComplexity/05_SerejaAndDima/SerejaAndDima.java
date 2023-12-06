@@ -28,8 +28,9 @@ public class SerejaAndDima {
             i++;
         }
 
-        return new int[]{serajaScore, dimaScore};
+        return new int[] { serajaScore, dimaScore };
     }
+
     public static void main(String[] args) {
         SerejaAndDima solution = new SerejaAndDima();
         Scanner scanner = new Scanner(System.in);
@@ -40,7 +41,7 @@ public class SerejaAndDima {
             a[i] = scanner.nextInt();
         }
         scanner.close();
-        
+
         int[] r = solution.solve(n, a);
         System.out.print(r[0] + " " + r[1]);
     }

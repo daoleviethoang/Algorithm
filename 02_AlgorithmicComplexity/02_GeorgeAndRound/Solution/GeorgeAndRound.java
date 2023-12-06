@@ -31,11 +31,11 @@ public class GeorgeAndRound {
         for (int i = 0; i < n; i++) {
             a[i] = scanner.nextInt();
         }
-        for (int i = 0; i < m; i ++) {
+        for (int i = 0; i < m; i++) {
             b[i] = scanner.nextInt();
         }
         scanner.close();
 
         System.out.print(solution.solve(n, m, a, b));
-    }    
+    }
 }

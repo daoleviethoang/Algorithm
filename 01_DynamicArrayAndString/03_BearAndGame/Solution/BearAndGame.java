@@ -7,7 +7,7 @@ public class BearAndGame {
             return 15;
         }
 
-        for (int i = 1; i < n; i ++) {
+        for (int i = 1; i < n; i++) {
             if (minutes[i] - minutes[i - 1] > 15) {
                 return minutes[i - 1] + 15;
             }

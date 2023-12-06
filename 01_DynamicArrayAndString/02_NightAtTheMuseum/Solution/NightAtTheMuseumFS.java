@@ -8,23 +8,23 @@ class NightAtTheMuseumFS {
         if (input.length() != 1) {
             for (int i = 1; i < input.length(); i++) {
                 int range = Math.abs(input.charAt(i) - input.charAt(i - 1));
-                
+
                 if (range > 13) {
                     results = results + (26 - range);
                 } else {
                     results = results + range;
                 }
-            }   
+            }
         }
 
         return results;
     }
-    
+
     public static void main(String[] args) {
         NightAtTheMuseumFS solution = new NightAtTheMuseumFS();
 
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine(); 
+        String input = scanner.nextLine();
         scanner.close();
 
         System.out.print(solution.solve(input));

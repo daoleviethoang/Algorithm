@@ -1,19 +1,20 @@
 import java.util.HashMap;
 import java.util.Scanner;
+
 public class Array {
     public int[] solve(int n, int k, int[] a) {
         HashMap<Integer, Integer> frequenceMap = new HashMap<>();
         int r = -1;
 
         if (k == 1) {
-            return new int[] {1,1};
+            return new int[] { 1, 1 };
         }
 
         for (int i = 0; i < n; i++) {
             if (frequenceMap.get(a[i]) == null) {
                 frequenceMap.put(a[i], 1);
             } else {
-                frequenceMap.put(a[i], frequenceMap.get(a[i])+1);
+                frequenceMap.put(a[i], frequenceMap.get(a[i]) + 1);
             }
 
             if (frequenceMap.keySet().size() == k) {
@@ -32,9 +33,9 @@ public class Array {
             }
         }
 
-        return r == -1 || r == 0  ? new int[] {-1,-1} : new int[]{l, r + 1};
+        return r == -1 || r == 0 ? new int[] { -1, -1 } : new int[] { l, r + 1 };
     }
-    
+
     public static void main(String[] args) {
         Array solution = new Array();
         Scanner scanner = new Scanner(System.in);
@@ -49,6 +50,6 @@ public class Array {
         scanner.close();
 
         int[] r = solution.solve(n, k, a);
-        System.out.print(r[0] + " "  + r[1]);
-    }    
+        System.out.print(r[0] + " " + r[1]);
+    }
 }

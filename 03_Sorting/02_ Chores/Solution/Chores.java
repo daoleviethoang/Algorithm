@@ -13,6 +13,7 @@ public class Chores {
 
         return 0;
     }
+
     public static void main(String[] args) {
         Chores solution = new Chores();
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +23,7 @@ public class Chores {
         int b = scanner.nextInt();
         int[] h = new int[n];
 
-        for (int  i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             h[i] = scanner.nextInt();
         }
 

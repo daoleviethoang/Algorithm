@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BearAndGameFS {    
+public class BearAndGameFS {
     public int solve(int n, int[] minutes) {
         int results = 0;
 
@@ -14,7 +14,7 @@ public class BearAndGameFS {
             if (minutes[0] > 15) {
                 return 15;
             } else {
-                for (int i = 1; i < minutes.length; i++) {   
+                for (int i = 1; i < minutes.length; i++) {
                     if (minutes[i] - minutes[i - 1] > 15) {
                         results = minutes[i - 1];
                         break;
@@ -22,7 +22,7 @@ public class BearAndGameFS {
                         results = minutes[i];
                     }
                 }
-        
+
                 return (results + 15) > 90 ? 90 : (results + 15);
             }
         }

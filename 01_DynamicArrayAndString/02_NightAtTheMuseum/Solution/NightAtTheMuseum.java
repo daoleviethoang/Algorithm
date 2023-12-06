@@ -13,12 +13,12 @@ class NightAtTheMuseum {
 
         return results;
     }
-    
+
     public static void main(String[] args) {
         NightAtTheMuseum solution = new NightAtTheMuseum();
 
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine(); 
+        String input = scanner.nextLine();
         scanner.close();
 
         System.out.print(solution.solve(input));

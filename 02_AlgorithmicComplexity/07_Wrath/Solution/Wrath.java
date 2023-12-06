@@ -4,6 +4,7 @@ public class Wrath {
     public int solve(int n, int[] a) {
         return 0;
     }
+
     public static void main(String[] args) {
         Wrath solution = new Wrath();
         Scanner scanner = new Scanner(System.in);
@@ -17,5 +18,5 @@ public class Wrath {
         scanner.close();
 
         System.out.print(solution.solve(n, a));
-    }    
+    }
 }

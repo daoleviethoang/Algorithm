@@ -5,10 +5,10 @@ import java.util.Stack;
 public class TransformTheExpression {
     public ArrayList<String> solve(int n, ArrayList<char[]> fss) {
         ArrayList<String> results = new ArrayList<String>();
-        for (char[] fs: fss) {
+        for (char[] fs : fss) {
             String r = "";
             Stack<Character> opStack = new Stack<>();
-            for (char f: fs) {
+            for (char f : fs) {
                 if (f == '(') {
                 } else if (f == ')') {
                     r = r + opStack.peek();
@@ -23,6 +23,7 @@ public class TransformTheExpression {
         }
         return results;
     }
+
     public static void main(String[] args) {
         TransformTheExpression solution = new TransformTheExpression();
         Scanner scanner = new Scanner(System.in);

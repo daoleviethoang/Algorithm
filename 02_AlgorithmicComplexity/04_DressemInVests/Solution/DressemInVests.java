@@ -22,7 +22,7 @@ public class DressemInVests {
                 j++;
             }
         }
-        
+
         return results;
     }
 
@@ -40,7 +40,7 @@ public class DressemInVests {
             a[i] = scanner.nextInt();
         }
 
-        for (int i = 0; i < m; i++){
+        for (int i = 0; i < m; i++) {
             b[i] = scanner.nextInt();
         }
 
@@ -48,7 +48,7 @@ public class DressemInVests {
 
         List<int[]> results = solution.solve(n, m, x, y, a, b);
         System.out.println(results.size());
-        for (int[] i: results) {
+        for (int[] i : results) {
             System.out.println(i[0] + " " + i[1]);
         }
     }

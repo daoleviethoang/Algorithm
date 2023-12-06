@@ -12,7 +12,7 @@ public class SortTheArray {
         for (int i = 1; i < n; i++) {
             if (a[i] < a[i - 1]) {
                 if (check == true) {
-                    return new int[]{0,0};
+                    return new int[] { 0, 0 };
                 }
                 if (frequence == 0) {
                     r[0] = i;
@@ -23,24 +23,25 @@ public class SortTheArray {
                 }
             } else {
                 if (a[i] < a[r[0] - 1]) {
-                    return new int[]{0,0};
+                    return new int[] { 0, 0 };
                 } else {
                     if (frequence == 1) {
                         check = true;
-                    } 
+                    }
                 }
             }
 
         }
 
         if (r[0] - 2 >= 0) {
-            if (a[r[1]-1] < a[r[0]-2]) {
-                return new int[]{0,0}; 
+            if (a[r[1] - 1] < a[r[0] - 2]) {
+                return new int[] { 0, 0 };
             }
         }
 
         return r;
     }
+
     public static void main(String[] args) {
         SortTheArray solution = new SortTheArray();
         Scanner scanner = new Scanner(System.in);
