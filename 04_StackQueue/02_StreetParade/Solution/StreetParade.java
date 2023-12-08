@@ -20,33 +20,28 @@ public class StreetParade {
                     sideStreet.add(cars[i]);
                 } else {
                     lastLoveMobiles = cars[i];
-                    continue;
                 }               
             } else {
                 if (cars[i] > sideStreet.peek()) {
-                    if (lastLoveMobiles != 0) {
-                        if (cars[i] - lastLoveMobiles > 1) {
-                            while (!sideStreet.isEmpty()) {
-                                if (sideStreet.peek() - lastLoveMobiles > 1) break;
-                                lastLoveMobiles = sideStreet.peek();
-                                sideStreet.pop();
-                            }
-
-                            if (!sideStreet.isEmpty()) {
-                                if (cars[i] > sideStreet.peek()) {
-                                    return "no";
-                                }
-                            }
-                            sideStreet.add(cars[i]);
-                            continue;
+                    if (cars[i] - lastLoveMobiles > 1) {
+                        while (!sideStreet.isEmpty()) {
+                            if (sideStreet.peek() - lastLoveMobiles > 1) break;
+                            lastLoveMobiles = sideStreet.peek();
+                            sideStreet.pop();
                         }
-                    } else {
-                        return "no";
-                    }
-                } else if (cars[i] < sideStreet.peek()) {
-                    if (cars[i] - lastLoveMobiles == 1) {
-                        lastLoveMobiles = cars[i];
+
+                        if (!sideStreet.isEmpty()) {
+                            if (cars[i] > sideStreet.peek()) {
+                                return "no";
+                            }
+                        }
+                        sideStreet.add(cars[i]);
                         continue;
+                    }
+                    return "no";
+                } else {
+                    if (cars[i] == lastLoveMobiles + 1) {
+                        lastLoveMobiles = cars[i];
                     } else {
                         sideStreet.add(cars[i]);
                     }
