@@ -10,6 +10,7 @@ public class TransformTheExpression {
             Stack<Character> opStack = new Stack<>();
             for (char f : fs) {
                 if (f == '(') {
+                    // skip
                 } else if (f == ')') {
                     r = r + opStack.peek();
                     opStack.pop();
