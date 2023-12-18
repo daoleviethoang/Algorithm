@@ -1,0 +1,1 @@
+https://assessment.hackerearth.com/ja/challenges/college/nits-local-10/algorithm/bishu-and-his-girlfriend

@@ -8,12 +8,12 @@ public class Dhoom4 {
 
     public static int BFS(int[] keys, int n, int keyOfLock, int keyOfSam) {
         boolean[] visited = new boolean[MAX];
-        int[] path = new int[MAX];
+        int[] dist = new int[MAX];
         Queue<Integer> q = new LinkedList<>();
 
         IntStream.range(0, MAX).forEach((int i) -> {
             visited[i] = false;
-            path[i] = 0;
+            dist[i] = 0;
         });
 
         q.add(keyOfSam);
@@ -24,13 +24,13 @@ public class Dhoom4 {
             for (int i = 0; i < n; i++) {
                 long v = (1L * u * keys[i]) % 100000;
                 if (!visited[(int) v]) {
-                    path[(int) v] = path[u] + 1;
+                    dist[(int) v] = dist[u] + 1;
                     visited[(int) v] = true;
                     q.add((int) v);
                 }
 
                 if ((int) v == keyOfLock) {
-                    return path[(int) v];
+                    return dist[(int) v];
                 }
             }
         }
