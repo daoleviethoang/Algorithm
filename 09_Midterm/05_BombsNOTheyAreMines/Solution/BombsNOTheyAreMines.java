@@ -1,9 +1,12 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 public class BombsNOTheyAreMines {
 
     static int R, C;
-    static char[][] grid;
+    static Character[][] grid;
     static int[] dr = { -1, 0, 0, 1 };
     static int[] dc = { 0, -1, 1, 0 };
 
@@ -55,9 +58,9 @@ public class BombsNOTheyAreMines {
 
             if (R == 0 && C == 0)
                 break;
-            grid = new char[R][C];
+            grid = new Character[R][C];
             for (int i = 0; i < R; ++i)
-                Arrays.fill(grid[i], '.');
+                Arrays.fill(grid[i], ".");
 
             int M = in.nextInt();
             for (int i = 0; i < M; ++i) {
