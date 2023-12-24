@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TravellingCost {
     static final int MAX = 505;
 
-    public static int[] Dijkstra(ArrayList<ArrayList<Node>> graph, int[] dist, int s) {
+    public int[] Dijkstra(ArrayList<ArrayList<Node>> graph, int[] dist, int s) {
         PriorityQueue<Node> pq = new PriorityQueue<>(new Comparator<Node>() {
             @Override
             public int compare(Node o1, Node o2) {
@@ -33,6 +33,7 @@ public class TravellingCost {
     }
 
     public static void main(String[] args) {
+        TravellingCost travellingCost = new TravellingCost();
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         ArrayList<ArrayList<Node>> graph = new ArrayList<>();
@@ -47,12 +48,12 @@ public class TravellingCost {
             int a = scanner.nextInt();
             int b = scanner.nextInt();
             int w = scanner.nextInt();
-            graph.get(a).add(new Node(b, w));
-            graph.get(b).add(new Node(a, w));
+            graph.get(a).add(travellingCost.new Node(b, w));
+            graph.get(b).add(travellingCost.new Node(a, w));
         }
 
         int s = scanner.nextInt();
-        int[] r = Dijkstra(graph, dist, s);
+        int[] r = travellingCost.Dijkstra(graph, dist, s);
         int q = scanner.nextInt();
         for (int i = 0; i < q; i++) {
             int f = scanner.nextInt();
@@ -60,14 +61,14 @@ public class TravellingCost {
         }
         scanner.close();
     }
-}
 
-class Node {
-    public Integer id;
-    public Integer dist;
+    class Node {
+        public Integer id;
+        public Integer dist;
 
-    public Node(Integer id, Integer dist) {
-        this.id = id;
-        this.dist = dist;
+        public Node(Integer id, Integer dist) {
+            this.id = id;
+            this.dist = dist;
+        }
     }
 }
