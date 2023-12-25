@@ -1,85 +1,74 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class TravellingCost {
     static final int MAX = 505;
 
-    public static void Dijkstra(ArrayList<ArrayList<Node>> graph, int[] dist, int[] path, int s) {
-        PriorityQueue<Node> pq = new PriorityQueue<Node>();
-        int n = graph.size();
+    public int[] Dijkstra(ArrayList<ArrayList<Node>> graph, int[] dist, int s) {
+        PriorityQueue<Node> pq = new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                return o1.dist.compareTo(o1.dist);
+            }
+        });
 
         pq.add(new Node(s, 0));
         dist[s] = 0;
-
         while (!pq.isEmpty()) {
             Node top = pq.poll();
             int u = top.id;
             int w = top.dist;
 
-            for (int i = 0; i < graph.get(u).size(); i++) {
-                Node neighbor = graph.get(u).get(i);
-
+            for (Node neighbor : graph.get(u)) {
                 if (w + neighbor.dist < dist[neighbor.id]) {
                     dist[neighbor.id] = w + neighbor.dist;
                     pq.add(new Node(neighbor.id, dist[neighbor.id]));
-                    path[neighbor.id] = u;
                 }
             }
         }
+
+        return dist;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);        
-
+        TravellingCost travellingCost = new TravellingCost();
+        Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-
         ArrayList<ArrayList<Node>> graph = new ArrayList<>();
-        int[] dist = new int[505];
-        int[] path = new int[505];
+        int[] dist = new int[MAX];
 
-        IntStream.range(0, MAX).forEach((int i) -> {
-            graph.add(new ArrayList<>());
-        });
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        Arrays.fill(path, -1);
+        for (int i = 0; i < MAX; i++) {
+            graph.add(new ArrayList<Node>());
+            dist[i] = Integer.MAX_VALUE;
+        }
 
-        IntStream.range(0, n).forEach((int i) -> {
+        for (int i = 0; i < n; i++) {
             int a = scanner.nextInt();
             int b = scanner.nextInt();
             int w = scanner.nextInt();
-
-            graph.get(a).add(new Node(b, w));
-        });
+            graph.get(a).add(travellingCost.new Node(b, w));
+            graph.get(b).add(travellingCost.new Node(a, w));
+        }
 
         int s = scanner.nextInt();
-        Dijkstra(graph, dist, path, s);
-
+        int[] r = travellingCost.Dijkstra(graph, dist, s);
         int q = scanner.nextInt();
         for (int i = 0; i < q; i++) {
             int f = scanner.nextInt();
-            if (dist[f] != Integer.MAX_VALUE) {
-                System.out.println("NO PATH");
-            } else {
-                System.out.println(dist[f]);
-            }
+            System.out.println(r[f] != Integer.MAX_VALUE ? r[f] : "NO PATH");
         }
-    }
-}
-
-class Node implements Comparable<Node> {
-    public Integer id;
-    public Integer dist;
-
-    public Node(Integer id, Integer dist) {
-        this.id = id;
-        this.dist = dist;
+        scanner.close();
     }
 
-    @Override
-    public int compareTo(Node o) {
-        return this.dist.compareTo(o.dist);
+    class Node {
+        public Integer id;
+        public Integer dist;
+
+        public Node(Integer id, Integer dist) {
+            this.id = id;
+            this.dist = dist;
+        }
     }
 }
