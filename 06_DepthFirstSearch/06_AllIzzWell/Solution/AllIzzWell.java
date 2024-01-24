@@ -15,26 +15,36 @@ public class AllIzzWell {
 
     public static boolean DFS(List<List<Cell>> graph, int n, int m, Cell s) {
         int cnt = 1;
-        boolean[][] visited = new boolean[n][m];
+        boolean[][] visited = new boolean[n+1][m+1];
         Stack<Cell> stack = new Stack<>();
         stack.add(s);
         visited[s.row][s.col] = true;
 
         while (!stack.isEmpty()) {
             Cell u = stack.pop();
+            boolean check = false;
             for (int i = 0; i < 8; i++) {
                 int row = u.row + dx[i];
                 int col = u.col + dy[i];
 
-                if (isValid(row, n, col, m) && !visited[row][col] && sentence.charAt(cnt) == u.value) {
+                if (isValid(row, n, col, m) && !visited[row][col] && sentence.charAt(cnt) == graph.get(row).get(col).value) {
                     visited[row][col] = true;
-                    stack.add(new Cell(row, col, graph.get(row).get(col).value));
-                    cnt++;
+                    stack.add(graph.get(row).get(col));
+                    check = true;
                 }
             }
+            if (cnt == sentence.length() - 1) {
+                return true;
+            }
+            if (check) {
+                cnt++;
+            }
+
         }
 
-        return true;
+
+
+        return false;
     }
 
     public static void main(String[] args) {
@@ -58,12 +68,21 @@ public class AllIzzWell {
                 graph.add(cells);
             }
 
+            boolean isYes = false;
+            loops:
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
                     if (graph.get(i).get(j).value == sentence.charAt(0)) {
-
+                        if (DFS(graph, n, m, graph.get(i).get(j))) {
+                            System.out.println("YES");
+                            isYes = true;
+                            break loops;
+                        }
                     }
                 }
+            }
+            if (!isYes) {
+                System.out.println("NO");
             }
         }
     }
