@@ -24,11 +24,12 @@ public class TheBenefactor {
                 if(!visited[v.id]) {
                     visited[v.id] = true;
                     cost[v.id] = cost[u.id] + v.len;
+                    stack.add(v);
+
                     if (cost[v.id] > maxCost) {
                         maxCost = cost[v.id];
                         leaf = v.id;
                     }
-                    stack.add(v);
                 }
             }
         }
