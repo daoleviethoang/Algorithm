@@ -1,45 +1,91 @@
-import java.util.Collections;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 
 public class RestaurantRating {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        PriorityQueue<Integer> ratingsHeap = new PriorityQueue<>(Collections.reverseOrder());
+        MyScanner scanner = new MyScanner();
+        PriorityQueue<Integer> reviewsHeap = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> reviewsShowedHeap = new PriorityQueue<>();
 
-        // tạo 1 cái min heap chứa các ratings đang show
-        // sau đó thêm các rating mới vào heap ratings
-        // sau đó check nếu size của heap đang show nhỏ hơn floor thì xóa bên heap đang show và add vào heap mới đồng thời kiểm tra
-
+        int numberOfReviews = 0;
         int n = scanner.nextInt();
 
         for (int i = 0; i < n; i++) {
             int type = scanner.nextInt();
 
-            int x = 0;
             if (type == 1) {
-                x = scanner.nextInt();
-                ratingsHeap.add(x);
+                int x = scanner.nextInt();
+                if (!reviewsShowedHeap.isEmpty() && x > reviewsShowedHeap.peek()) {
+                    int a = reviewsShowedHeap.poll();
+                    reviewsShowedHeap.add(x);
+                    reviewsHeap.add(a);
+                } else {
+                    reviewsHeap.add(x);
+                }
+                numberOfReviews++;
             } else if (type == 2) {
-                int floor = ratingsHeap.size()/3;
+                int numberOfReviewsShowed = numberOfReviews/3;
 
-                if (floor == 0) {
+                if (numberOfReviewsShowed == 0) {
                     System.out.println("No reviews yet");
                 } else {
-                    int tmp[] = new int[floor + 1];
-
-                    for (int j = 0; j < floor; j++) {
-                        tmp[j] = ratingsHeap.poll();
+                    while (reviewsShowedHeap.size() < numberOfReviewsShowed) {
+                        reviewsShowedHeap.add(reviewsHeap.poll());
                     }
 
-                    System.out.println(tmp[floor - 1]);
-
-                    for (int j = 0; j < tmp.length; j++) {
-                        ratingsHeap.add(tmp[j]);
-                    }
+                    System.out.println(reviewsShowedHeap.peek());
                 }
             }
         }
-        scanner.close();
     }    
+
+    public static class MyScanner {
+        BufferedReader br;
+        StringTokenizer st = null;
+        public MyScanner() {
+            br = new BufferedReader(new InputStreamReader(System.in));
+        }
+ 
+        public MyScanner(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream));
+        }
+ 
+        boolean hasNext() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    String tmp = br.readLine();
+                    if (tmp == null)
+                        return false;
+                    st = new StringTokenizer(tmp);
+                } catch (IOException e) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        String next() {
+            if (hasNext())
+                return st.nextToken();
+            return null;
+        }
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+        String nextLine() {
+            String str = "";
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
 }
